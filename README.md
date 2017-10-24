@@ -20,7 +20,7 @@ to download the following assets and extract them to some local path:
 * ShapeNet Core dataset from [here](https://shapenet.org). (You will need to register)
 * SceneNet layouts and textures from [here](https://github.com/jmccormac/SceneNetRGBD_Layouts.git)
 
-E.g. '/path/to/your/ShapeNet/' should contain asset folders such as '02691156/40278c4bbf6c1f3d9642905e5096dbcb/models/model\_normalized.{obj,mtl}', and '/path/to/your/SceneNetLayouts/' should contain the folders 'bathroom/bathroom1\_layout.obj' and 'texture\_library'
+E.g. '/path/to/your/ShapeNet/' should contain asset folders such as '02691156/40278c4bbf6c1f3d9642905e5096dbcb/models/model\_normalized.{obj,mtl}', and '/path/to/your/SceneNetRGBD_Layouts/' should contain the folders 'bathroom/bathroom1\_layout.obj' and 'texture\_library'
 
 # 3. How to run it? #
 
@@ -29,11 +29,11 @@ After building each of the components run:
 
 ```
 cd scene_generator/build
-./scenenet_room_generator /path/to/your/ShapeNet/ /path/to/your/SceneNetLayouts/
+./scenenet_room_generator /path/to/your/ShapeNet/ /path/to/your/SceneNetRGBD_Layouts/
 cd ../../camera_trajectory_generator/build
-./room_camera_intersection /path/to/your/ShapeNet/ /path/to/your/ScenenetLayouts/ ../../scene_generator/build/scene_description.txt
+./room_camera_intersection /path/to/your/ShapeNet/ /path/to/your/SceneNetRGBD_Layouts/ ../../scene_generator/build/scene_description.txt
 cd ../../renderer/build
-./scenenet_render /path/to/your/ShapeNet/ /path/to/your/ScenenetLayouts/ ../../camera_trajectory_generator/build/scene_and_trajectory_description.txt
+./scenenet_render /path/to/your/ShapeNet/ /path/to/your/SceneNetRGBD_Layouts/ ../../camera_trajectory_generator/build/scene_and_trajectory_description.txt
 ```
 
 This should then produce framenum_{rgb.jpg,depth.png,instance.png} as well as a render_info.log file in the render build directory. If the rendering does not output anything it may say "Average intensity too extreme". This is because of the checks put in to ensure the images are not too bleached or dark.  Just keep rerunning the command and a new random seed will generate a different set of lights.
