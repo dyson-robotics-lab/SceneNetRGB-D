@@ -6,7 +6,7 @@ This is the physics simulation code used to generate random scene description te
 
 # 1. How to build it? #
 
-Compile ProjectChrono with CMake:
+Compile ProjectChrono (we use version 2.0.0, and more specifically, the develop branch, with commit hash: [b5af3f50c39cf2f40e4b05b3115ebb23a69ec8c9](https://github.com/projectchrono/chrono/commit/b5af3f50c39cf2f40e4b05b3115ebb23a69ec8c9)) with CMake:
 
 * [Project Chrono](http://projectchrono.org/) (and its [Irrlicht](http://downloads.sourceforge.net/irrlicht/irrlicht-1.8.2.zip) dependency)
 
