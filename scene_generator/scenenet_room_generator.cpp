@@ -719,7 +719,7 @@ int main(int argc, char* argv[])
     std::cout<<"Simulating system"<<std::endl;
     mphysicalSystem.Setup();
 
-    const float total_time = 60000.0;
+    const float total_time = 60.0;
     /*
     */
     // This is for non-rendered physical simulation
