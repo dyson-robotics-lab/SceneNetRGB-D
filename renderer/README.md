@@ -10,7 +10,7 @@ It is a modified version of the Opposite Renderer available [here](https://githu
 
 The following instructions have been tested on Arch linux, with gcc 7.2.0, CUDA 8.0.  For the CVD dependency a compiler that supports C++14 is required.
 
-Dependenices are:
+Dependencies are:
 
 * CMake
 * OpenGL
@@ -22,7 +22,7 @@ Dependenices are:
 * Eigen
 * [Optix](https://developer.nvidia.com/optix)
 
-* Download and install the Optix framework (NVIDIA-OptiX-SDK-4.1.1) from the Nvidia website (you probably have to register with them) - point towards the folder it is installed in CMakeModules/FindOptiX.cmake.
+Download and install the Optix framework (NVIDIA-OptiX-SDK-4.1.1) from the Nvidia website (you probably have to register with them) - point towards the folder it is installed in CMakeModules/FindOptiX.cmake.
 
 ```
 set(OptiX_INSTALL_DIR "/your/folder/containing/Optix" CACHE PATH "Path to OptiX installed location.")
@@ -32,12 +32,19 @@ by default it assumes the Optix folder (i.e. containing lib64 and include direct
 
 ## Make a build directory and build the project
 
+Make and build the project with the normal cmake build pattern. I.e.
+
 ```
 mkdir build
 cd build
 cmake ..
 make
 ```
+
+## Common issues
+
+* If you receive errors such as 'The supplied PTX requires at least one device with SM 61 or greater', you need to edit the version in the CMakeLists.txt line: 18 to suit your GPU. Nvidia has a list [here](https://developer.nvidia.com/cuda-gpus). If you click on 'CUDA-Enabled GeForce Products' and find your GPU and its 'Compute Capability' e.g. For a GTX 770 it has Compute Capability 3.0 for which you would use 30 e.g. ```SET(CUDA_NVCC_FLAGS   "-arch=compute_30 -code=sm_30"  "--use_fast_math" "-O3" "-lineinfo" "-Xcompiler")```
+* If you receive errors such as 'CVD::Exceptions::Image_IO::UnsupportedImageSubType' this is often as a result of the texture interlacing of pngs in ShapeNets.  You can convert the textures in the whole directory using ImageMagick and the following command: ```find ./ -type f -name "*.png" -exec convert -interlace none -define png:color-type=6 {} {} \;```
 
 ## Other things
 
