@@ -8,7 +8,7 @@ It is a modified version of the Opposite Renderer available [here](https://githu
 
 # 1. How to build it? #
 
-The following instructions have been tested on Arch linux, with gcc 7.2.0, CUDA 8.0.  For the CVD dependency a compiler that supports C++14 is required.
+The following instructions have been tested on Arch linux, with gcc 7.2.0, CUDA 8.0.  For the CVD dependency a compiler that supports C++14 is required. Additionally for the cuda code the host compiler has been set to gcc-5 as gcc-7 is not supported.  It is also possible to use gcc-6 in which case the ```SET(CUDA_HOST_COMPILER gcc-5)``` line in ```CMakeLists.txt``` will need to be updated to the installed version.
 
 Dependencies are:
 
@@ -22,6 +22,13 @@ Dependencies are:
 * Eigen
 * [Optix](https://developer.nvidia.com/optix)
 
+NOTE: For CVD make sure to compile with at least some of the optional dependencies such as libjpeg and libpng - if you do not have these you may experience errors when rendering such as:
+
+```
+terminate called after throwing an instance of 'CVD::Exceptions::Image_IO::UnsupportedImageSubType'
+Aborted (core dumped)
+```
+
 Download and install the Optix framework (NVIDIA-OptiX-SDK-4.1.1) from the Nvidia website (you probably have to register with them) - point towards the folder it is installed in CMakeModules/FindOptiX.cmake.
 
 ```
@@ -29,6 +36,8 @@ set(OptiX_INSTALL_DIR "/your/folder/containing/Optix" CACHE PATH "Path to OptiX 
 ```
 
 by default it assumes the Optix folder (i.e. containing lib64 and include directories), is in the main renderer folder (alongside the src directory)
+
+
 
 ## Make a build directory and build the project
 
