@@ -16,15 +16,11 @@ Dependencies are:
 * OpenGL
 * GLUT
 * [CUDA >= 8.0](https://developer.nvidia.com/cuda-downloads)
-* [CVD](https://github.com/edrosten/libcvd)
+* [CVD](https://github.com/edrosten/libcvd) (make sure to compile with at least some of the optional dependencies such as libjpeg and libpng.)
 * [Pangolin](https://github.com/stevenlovegrove/Pangolin)
 * [ASSIMP](http://assimp.sourceforge.net/)
 * Eigen
 * [Optix](https://developer.nvidia.com/optix)
-
-NOTE: For CVD make sure to compile with at least some of the optional dependencies such as libjpeg and libpng - if you do not have these you may experience errors when rendering such as:
-
-
 
 Download and install the Optix framework (NVIDIA-OptiX-SDK-4.1.1) from the Nvidia website (you probably have to register with them) - point towards the folder it is installed in CMakeModules/FindOptiX.cmake.
 
