@@ -24,10 +24,7 @@ Dependencies are:
 
 NOTE: For CVD make sure to compile with at least some of the optional dependencies such as libjpeg and libpng - if you do not have these you may experience errors when rendering such as:
 
-```
-terminate called after throwing an instance of 'CVD::Exceptions::Image_IO::UnsupportedImageSubType'
-Aborted (core dumped)
-```
+
 
 Download and install the Optix framework (NVIDIA-OptiX-SDK-4.1.1) from the Nvidia website (you probably have to register with them) - point towards the folder it is installed in CMakeModules/FindOptiX.cmake.
 
@@ -54,6 +51,7 @@ make
 
 * If you receive errors such as 'The supplied PTX requires at least one device with SM 61 or greater', you need to edit the version in the CMakeLists.txt line: 18 to suit your GPU. Nvidia has a list [here](https://developer.nvidia.com/cuda-gpus). If you click on 'CUDA-Enabled GeForce Products' and find your GPU and its 'Compute Capability' e.g. For a GTX 770 it has Compute Capability 3.0 for which you would use 30 e.g. ```SET(CUDA_NVCC_FLAGS   "-arch=compute_30 -code=sm_30"  "--use_fast_math" "-O3" "-lineinfo" "-Xcompiler")```
 * If you receive errors such as 'CVD::Exceptions::Image_IO::UnsupportedImageSubType' this is often as a result of the texture interlacing of pngs in ShapeNets.  You can convert the textures in the whole directory using ImageMagick and the following command: ```find ./ -type f -name "*.png" -exec convert -interlace none -define png:color-type=6 {} {} \;```
+* If after converting the textures you still receive errors such as ```terminate called after throwing an instance of 'CVD::Exceptions::Image_IO::UnsupportedImageSubType``` ensure you have libjpeg and libpng installed as dependencies before compiling CVD.
 
 ## Other things
 
