@@ -14,7 +14,7 @@ Dependenices are:
 * OpenGL
 * GLUT
 * [CUDA >= 8.0](https://developer.nvidia.com/cuda-downloads)
-* [CVD](https://github.com/edrosten/libcvd)
+* [CVD](https://github.com/edrosten/libcvd) Make sure to compile with at least some of the optional dependencies (such as libjpeg and libpng)
 * [Pangolin](https://github.com/stevenlovegrove/Pangolin)
 * [ASSIMP](http://assimp.sourceforge.net/)
 
